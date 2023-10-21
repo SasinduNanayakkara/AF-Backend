@@ -5,10 +5,10 @@ import { verifyToken } from "../Utils/verifyToken";
 const router = Router();
 
 router.post("/",verifyToken, ConsultantController.addConsultant);
-router.get("/", ConsultantController.getConsultants);
-router.get("/:id", ConsultantController.getOneConsultant);
-router.put("/:id", ConsultantController.updateConsultant);
+router.get("/",verifyToken, ConsultantController.getConsultants);
+router.get("/:id",verifyToken, ConsultantController.getOneConsultant);
+router.put("/:id",verifyToken, ConsultantController.updateConsultant);
 router.delete("/:id",verifyToken, ConsultantController.deleteConsultant);
-router.put("/status/:id", ConsultantController.updateConsultantStatus);
+router.put("/status/:id",verifyToken, ConsultantController.updateConsultantStatus);
 
 export default router;

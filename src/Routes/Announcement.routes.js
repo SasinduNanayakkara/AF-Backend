@@ -9,6 +9,6 @@ router.post("/",verifyToken, AnnouncementController.addAnnouncement);
 router.get("/", AnnouncementController.getAnnouncements);
 router.get("/:id", AnnouncementController.getOneAnnouncement);
 router.put("/:id",verifyToken, AnnouncementController.updateAnnouncement);
-router.delete("/:id",verifyToken, AnnouncementController.deleteAnnouncement);
+router.delete("/:id", AnnouncementController.deleteAnnouncement);
 
 export default router;

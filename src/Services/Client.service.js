@@ -1,11 +1,16 @@
 import { createClient, deleteClientById, getAllClients, getClientById, updateClientById } from "../Repository/Client.repository";
 import bcrypt from "bcrypt";
+import { passwordValidation } from "../Utils/passwordValidation";
 
 export const addClient = async ({firstName, lastName, email, password, phone, location, prefix, profileImage}) => {
 
+    try {
+    if(!passwordValidation(password)) {
+        throw new Error("Invalid format for password");
+    }
+    
     const encryptedPassword = await bcrypt.hash(password, 10);
 
-    try {
         const result = await createClient({firstName, lastName, email, password: encryptedPassword, phone, location, prefix, profileImage});
         return result;
     }
@@ -17,6 +22,7 @@ export const addClient = async ({firstName, lastName, email, password, phone, lo
 export const getClients = async () => {
     try {
         const result = await getAllClients();
+        
         return result;
     }
     catch (error) {

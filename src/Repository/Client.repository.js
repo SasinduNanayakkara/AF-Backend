@@ -12,7 +12,7 @@ export const createClient = async ({firstName, lastName, email, password, phone,
 
 export const getAllClients = async () => {
     try {
-        const result = await Client.find();
+        const result = await Client.find().lean();
         return result;
     }
     catch (error) {

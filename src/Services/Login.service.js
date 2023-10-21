@@ -13,6 +13,7 @@ export const loginService = async ({email, password}) => {
     let decryptedClientPassword;
     if (isAdmin) {
         decryptedAdminPassword = await bcrypt.compare(password, isAdmin.password);
+        
     }
     if (isConsultant) {
         decryptedConsultantPassword = await bcrypt.compare(password, isConsultant.password);
@@ -30,7 +31,7 @@ export const loginService = async ({email, password}) => {
             return {isClient, role: "client"};
     }
     else {
-        throw new Error("No User Found");
+        throw new Error("Password doesn't match for this email");
     }
 }
 

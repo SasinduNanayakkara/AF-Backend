@@ -35,6 +35,12 @@ const ClientSchema = new Schema({
         type: String,
         required: false,
     },
+    google_auth: {
+        type: Boolean,
+    },
+    google_id: {
+        type: String,
+    }
 }, { timestamps: true });
 
 export const Client = mongoose.model("Client", ClientSchema);
